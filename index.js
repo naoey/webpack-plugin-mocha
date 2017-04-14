@@ -29,13 +29,14 @@ class WebpackMochaPlugin {
   }
 
   apply(compiler) {
-    compiler.plugin('compilation', (compilation) => {
+    compiler.plugin('after-compile', (compilation, callback) => {
       if (this.options.setupFile) {
         require(path.resolve(compilation.options.context, this.options.setupFile)); // eslint-disable-line
       }
 
       this.mocha.run()
-      .on('fail', (test, err) => this.handleFailure(compilation, test, err));
+      .on('fail', (test, err) => this.handleFailure(compilation, test, err))
+      .on('end', callback);
     });
   }
 }
