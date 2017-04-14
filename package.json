@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-mocha",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Webpack plugin to run mocha tests",
   "main": "./dist/index.js",
   "scripts": {
