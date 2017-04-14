@@ -1,0 +1,15 @@
+language: node_js
+
+node_js:
+  - 7
+  - 6
+
+env:
+  - WEBPACK_VERSION=2
+  - WEBPACK_VERSION=1
+
+matrix:
+  fast_finish: true
+
+before_script:
+  - npm install

@@ -1,0 +1,5 @@
+test/
+.babelrc
+.travis.yml
+index.js
+webpack.config.js

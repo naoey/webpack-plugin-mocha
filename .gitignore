@@ -1,0 +1,17 @@
+# Build
+dist/
+
+# Node
+node_modules/
+node/
+npm-debug.log
+
+# OS crud
+.DS_Store
+Thumbs.db
+desktop.ini
+Icon*
+
+# Webpack stuff for local testing
+webpack.config.js
+test/
