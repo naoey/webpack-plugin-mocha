@@ -13,5 +13,6 @@ desktop.ini
 Icon*
 
 # Webpack stuff for local testing
+.setup.js
 webpack.config.js
 test/

@@ -9,7 +9,7 @@ class WebpackMochaPlugin {
     const testDir = options.testDir ? options.testDir : 'test';
     const pattern = new RegExp(options.pattern ? options.pattern : '.js');
 
-    this.mocha = new Mocha({ reporter: 'list' });
+    this.mocha = new Mocha();
 
     fs.readdirSync(testDir)
     .filter(file => pattern.test(file))
@@ -30,6 +30,10 @@ class WebpackMochaPlugin {
 
   apply(compiler) {
     compiler.plugin('compilation', (compilation) => {
+      if (this.options.setupFile) {
+        require(path.resolve(compilation.options.context, this.options.setupFile)); // eslint-disable-line
+      }
+
       this.mocha.run()
       .on('fail', (test, err) => this.handleFailure(compilation, test, err));
     });

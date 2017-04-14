@@ -16,9 +16,10 @@ module.exports = {
   ...
   plugins: [
     new WebpackMochaPlugin({
-      emitWarn: false, // Emit warnings instead of errors on test failures.
+      emitWarn: false, // Emit warnings instead of errors on test failures
       testDir: './test/', // Root directory containing tests
       pattern: '.spec.js', // A RegExp to match test files
+      setupFile: undefined, // Module to be required before running the tests to set up the test environment
     }),
   ],
   ...

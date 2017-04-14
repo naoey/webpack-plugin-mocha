@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-mocha",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Webpack plugin to run mocha tests",
   "main": "./dist/index.js",
   "scripts": {
@@ -19,7 +19,6 @@
     "plugin"
   ],
   "author": "naoey",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/naoey/webpack-plugin-mocha/issues"
   },
