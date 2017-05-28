@@ -7,7 +7,7 @@
     "prepublish": "npm run build",
     "build": "rm -rf dist && mkdir dist && npm run babel",
     "babel": "babel index.js --out-file ./dist/index.js",
-    "webpack": "webpack"
+    "webpack": "cd test && webpack && cd .."
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,10 @@
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^6.4.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-uglify": "^1.0.2",
     "babel-preset-env": "^1.3.3",
+    "chai": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0"
   },
