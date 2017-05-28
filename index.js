@@ -7,13 +7,9 @@ class WebpackMochaPlugin {
   constructor(options) {
     this.options = options;
     this.pattern = options.pattern ? options.pattern : './test/**/*.js';
-
-    this.apply = this.apply.bind(this);
-
-    this.error = null;
   }
 
-  apply(compiler) {
+  apply = (compiler) => {
     const mocha = new Mocha();
 
     const results = {};
@@ -29,8 +25,8 @@ class WebpackMochaPlugin {
         .forEach(file => mocha.addFile(file));
 
         mocha.run()
-        .on('test', (test) => { results[test.title] = null; })
-        .on('pass', (test) => { results[test.title] = 'pass'; })
+        .on('test', test => (results[test.title] = null))
+        .on('pass', test => (results[test.title] = 'pass'))
         .on('fail', (test, err) => {
           if (!this.errors) {
             this.errors = [];
@@ -39,16 +35,10 @@ class WebpackMochaPlugin {
           results[test.title] = 'fail';
           this.errors.push(new Error(`test ${test.title}\n${JSON.stringify(err)}`));
         })
-        .on('end', () => {
-          if (this.options.breakOnFailure) {
-            callback(this.errors, results);
-          } else {
-            callback(null, results);
-          }
-        });
+        .on('end', () => callback(this.options.breakOnFailure ? this.errors : null, results));
       });
     });
-  }
+  };
 }
 
 module.exports = WebpackMochaPlugin;
